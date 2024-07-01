@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Adding Persistent Storage to Applications :: Developer Introduction to OpenShift</title>
-    <meta name="generator" content="Antora 2.3.4">
+    <title>Configuration and Dependency Injection :: Developer Introduction to OpenShift</title>
+    <meta name="generator" content="Antora 3.1.8">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -140,7 +140,7 @@
     </div>
   </nav>
 </header><div class="body">
-<div class="nav-container" data-component="ocpintro" data-version="4.11">
+<div class="nav-container" data-component="ocpintro" data-version="4.15">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -167,13 +167,13 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="005_deploying_multiple_applications.html"><strong>005</strong> - Deploying Multiple Apps</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="006_config_injection.html"><strong>006</strong> - Injecting Configuration into Apps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="007_secrets.html"><strong>007</strong> - Injecting Secure Configuration into Apps</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="008_storage.html"><strong>008</strong> - Adding Storage to Apps</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -193,14 +193,14 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Introduction to OpenShift Course</span>
-    <span class="version">4.11</span>
+    <span class="version">4.15</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Introduction to OpenShift Course</span>
       <ul class="versions">
-        <li class="version is-current is-latest">
-          <a href="index.html">4.11</a>
+        <li class="version is-current">
+          <a href="index.html">4.15</a>
         </li>
       </ul>
     </li>
@@ -216,25 +216,25 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Introduction to OpenShift Course</a></li>
-    <li><a href="008_storage.html"><strong>008</strong> - Adding Storage to Apps</a></li>
+    <li><a href="006_config_injection.html"><strong>006</strong> - Injecting Configuration into Apps</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="file:///Users/uther/git/fabricdevex/documentation/modules/ROOT/pages/008_storage.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="file:///home/marrober/data/git-repos/fabricdevex/documentation/modules/ROOT/pages/006_config_injection.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Adding Persistent Storage to Applications</h1>
+<h1 class="page">Configuration and Dependency Injection</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="_images/008-image001.png" alt="Setting up Storage">
+<img src="_images/006-image001.png" alt="Injecting Configuration into Applications">
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2><strong>Adding Persistent Storage to Applications</strong></h2>
+<h2><strong>Injecting Runtime Configuration into Applications</strong></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -242,13 +242,13 @@
 <p><strong>What will you learn?</strong></p>
 </div>
 <div class="paragraph">
-<p>The Module introduces the concepts of Persistent Storage, which gives Applications storage that exists and persists beyond the lifespan of the Pod running in OpenShift</p>
+<p>This Module will introduce you to the concepts of Config Maps and Environment Variables being injected into active Pods</p>
 </div>
 <div class="paragraph">
-<p>This will demonstrate the concept, usecases and constructs used to create, manipulate and retain storage for Applications</p>
+<p>This will highlight the functionality of changing Application behaviour without changing code and therefore the Image that is used for the Application. This allows for dependency injection to be used in Applications, and encourages the creation of Cloud Native behaviours.</p>
 </div>
 <div class="paragraph">
-<p>After completing this Module you will understand the concepts of Persistent Storage with regard to Applications in OpenShift</p>
+<p>After completing the Module you will understand how to create, manipulate and use Config Maps to inject runtime information into Applications in OpenShift</p>
 </div>
 </div>
 </div>
@@ -298,7 +298,8 @@ you are creating</strong></p>
 <div class="sect2">
 <h3><strong>Setting up an example Application for the module</strong></h3>
 <div class="paragraph">
-<p>First we will setup an example Application to show the use of Persistent Volumes and Storage within OpenShift</p>
+<p>First we will setup an example Application to show the use of the Config Maps and Environment variables. This Application is a Quarkus app with some RESTful endpoints for examining
+and searching the environment variables exposed to the Container.</p>
 </div>
 <div class="paragraph">
 <p>Make sure you are at the Developer Viewpoint and viewing the <strong>Topology</strong> page. Click <strong>+Add</strong> then <strong>Import from Git</strong>. In the Git repo textbox paste the value from below:</p>
@@ -309,46 +310,49 @@ you are creating</strong></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Set the <strong>Application</strong> (which is the Application Grouping) to <strong>storage-app</strong> by selecting <strong>Create Application</strong> from the pulldown and entering storage-app into the textbox. Change the name to <strong>storageexample</strong>. Set the <strong>Resource</strong> type to generate to <strong>DeploymentConfig</strong>. Hit <strong>Create</strong> to start the build.</p>
+<p>Set the <strong>Application</strong> (which is the Application Grouping) to <strong>config-app</strong> by selecting <strong>Create Application</strong> from the pulldown and entering config-app into the textbox. Leave the name as <strong>envchecker</strong>. Set the <strong>Resource</strong> type to generate to <strong>DeploymentConfig</strong>. Hit <strong>Create</strong> to start the build.</p>
+</div>
+<div class="paragraph">
+<p>Once the build has completed successfully the Application Roundel should appear as shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/006-image002.png" alt="Active Application" width="400px">
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3><strong>Creating Storage for Consumption</strong></h3>
+<h3><strong>Testing the Application</strong></h3>
 <div class="paragraph">
-<p>We will now create some storage for the Application to use. In order to do this we need to understand some of the concepts behind how Storage works within Kubernetes/OpenShift.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Ephemeral vs Persisted Storage</div>
-<div class="paragraph">
-<p>Kubernetes and OpenShift are designed to be Cloud Native in the way they handle Applications. Put simply, Applications are now deemed to be <strong>Cattle</strong> instead of <strong>Pets</strong>.</p>
+<p>Click on this link to test the application - <a href="https://envchecker-%PROJECT%.%CLUSTER_SUBDOMAIN%/envs/getall" class="bare params-link" target="_blank" rel="noopener">https://envchecker-%PROJECT%.%CLUSTER_SUBDOMAIN%/envs/getall</a></p>
 </div>
 <div class="paragraph">
-<p>This was a fantastic analogy originally from Microsoft that defines something to be a pet if you nurture it&#8217;s environment and do all you can to keep it alive. Cattle defines a workload that can be lost
-and simply restarted. This requires a degree of engineering within an Application to make it stateless.</p>
+<p>The page that is generated will list all of the environment variables that are expressed into the Container. Leave this page up as we will use it going forward.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>OpenShift and Kubernetes both support the injection of environment variables into the Containers they orchestrate via Pods. This is a brilliant feature as it allows you to push contextual information into the running Pod that <em>isn&#8217;t part of the original Image</em>.<br></p>
 </div>
 <div class="paragraph">
-<p>Basically an Application should 'outsource' all its state that it needs to retain between incarnations. Effectively they should be <strong>sausage machines</strong> and all configuration and persistence
-should be done external to the Applications.</p>
+<p>What this means in English is that you can craft applications that are driven by external configuration; for example setting a variable to indicate whether the Application runs in PROD or DEV. When you build your Application you don&#8217;t need to define this external variable, just consume it (by reading the value of the Environment variable).<br></p>
 </div>
 <div class="paragraph">
-<p>This lends itself perfectly to the concept of Kubernetes/OpenShift hosted Applications, as the Pods are designed to be ephemeral and self-healing; if you lose a Pod OpenShift
-will automatically recreate it somewhere else to make sure the object state required, stored in the brain (<strong>etcd</strong>), matches the physical state of the system.</p>
+<p>The Image that represents your Application is an immutable set of file differences; the state of the Application is therefore immutable when it is an Image. When the Pod is created OpenShift copies the file
+contents and executes them with an overlay file system that allows the Container to change them <em>but this is local to the Container</em>. If the Container shuts down and is recreated it is created from the
+original immutable Image.<br></p>
 </div>
 <div class="paragraph">
-<p>Also Containers are built from immutable Images. If you lose a Container when it is restored it only contains the file-systems as they are defined in the Image.</p>
+<p>Dependency Injection allows you to change the way in which the Application executes at runtime <em>without having to change the image or recreate the Pod</em>.</p>
 </div>
-<div class="paragraph">
-<p>To support some post-execution file persistence Kubernetes and OpenShift support the concept of <strong>Persistent Volumes</strong>, external storage that can be expressed as an interactable
-file system in the Containers readable/writeable storage space.</p>
-</div>
-<div class="paragraph">
-<p>This storage is hosted <strong>external</strong> to the Container, meaning it persists after the Container is shutdown, and can be restored to a copy of the Container</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>We are now going to create a pot of storage for our Application to use.</p>
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -358,112 +362,60 @@ file system in the Containers readable/writeable storage space.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>We are also going to take advantage of a useful feature of the Developer interface; you can <strong>search</strong> for objects of a certain type and then add them to the lefthand havigation panel. For
-ease of use we are going to do this for the <strong>PVC</strong> <strong>Persistent Volume Claims</strong>.</p>
+<p>One of the nice features of OpenShift is that it creates and exposes a number of environment variables by default - when you looked at the page for the Application it would have listed all the environment variables it can see. If you scanned them
+you would have seen a lot of OpenShift specifics including Service discovery information for the Application itself.<br></p>
+</div>
+<div class="paragraph">
+<p>In fact if you have more then one Application running in your Project every Application will have environment variables injected into it relating to, for example,
+the service ports for all the other Applications.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Real World Example</strong> - say you are running a webserver Application and a Database Application; the webserver can use the environment variables that are automatically added into its Pod to connect directly to the Database Pod without having to do service discovery.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3><strong>Injecting Environment Variables using ConfigMaps</strong></h3>
 <div class="paragraph">
-<p>Click on <strong>Search</strong> on the lefthand panel. Click on the <strong>Resources</strong> pulldown. Enter <strong>PVC</strong> in the search box. Click on the <strong>PVC</strong> option. The panel will show as below:</p>
+<p>Click on <strong>ConfigMaps</strong> on the lefthand navigation panel.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/008-image002.png" alt="PVC Panel" width="550px">
-</div>
-</div>
-<div class="paragraph">
-<p>Click on the <strong>+ Add to navigation</strong> link. The shortcut to that object type will be displayed in the lower left part of the navigation. You can add any of the resources that can be rendered here as useful shortcuts
-while developing. To remove them simply place the mouse over the item and click on the <strong>-</strong> symbol on the right of the entry.</p>
-</div>
-<div class="paragraph">
-<p>Now click on the <strong>Create PersistentVolumeClaim</strong> button.</p>
-</div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The distinction between PersistentVolume and PersistentVolumeClaim is worth understanding at this point. The PersistentVolume is a physical volume maintained by the OpenShift system. It is Cluster-wide, not
-bound to a named Project, but can be reserved and locked to a Project using a <strong>PersistentVolumeClaim</strong>.</p>
-</div>
-<div class="paragraph">
-<p>If a <strong>PersistentVolume</strong> is <strong>bound</strong> it is locked to a <strong>PVC</strong>. The PersistentVolume itself has a number of determinators</p>
-</div>
-<div class="paragraph">
-<p><strong>Reclaim Policy</strong> informs the Cluster what to do with the <strong>PV</strong> once it has no <strong>PVCs</strong> claiming it. This policy can be 'Retain', which keeps the data on the storage even when it is not bound to a PVC, or 'Delete', which automatically hard wipes the data when there are no bindings to a PVC.</p>
-</div>
-<div class="paragraph">
-<p><strong>Access modes</strong> is an important one. This can be <strong>ReadOnly</strong>, <strong>ReadWriteOnce</strong> or <strong>ReadWriteMany</strong>. If a PV is <strong>ReadOnly</strong> it can only be read by the Container it is attached to (it is mounted read only). If a PV is <strong>ReadWriteOnce</strong> it is read/write for the Container it is attached to <strong>but</strong> it can only be attached to <strong>one</strong> instance of the container per worker node. If it is
-<strong>ReadWriteMany</strong> it can be attached and consumed by <strong>multiple</strong> Containers <em>at the same time</em>. This provides a singular source of storage that is shared, in real time, by multiple replicas of the same Application.</p>
+<p>You will notice there are already a lot of configmaps in your project. OpenShift uses configmaps itself to pass contextual information into various components within the Project.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In the dialog for creating a PVC leave the storage class as it is (if you hit the pulldown you will see the types of storage that can be used; the <strong>StorageClass</strong> is an object installed by
-the administrators for cookie-cutting various storage types.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/008-image003.png" alt="PVC dialog" width="500px">
-</div>
+<p>Click on <strong>Create ConfigMap</strong> on the top righthand side of the <strong>ConfigMaps</strong> panel.</p>
 </div>
 <div class="paragraph">
-<p>For the <strong>PersistentVolumeClaim name</strong> enter:</p>
+<p>You can choose to manually edit the contents of the example ConfigMap it provides you, or simply copy the text below and overwrite the contents.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">examplestorage</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: testconfigmap
+data:
+  test_variable1: This is a test
+  test_variable2: Some more data
+  test_variable3: "2022"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Leave the <strong>Access mode</strong> on <strong>Single user (RWO)</strong>. Set the size of the claim to <strong>1 GB</strong>. Leave the <strong>Volume mode</strong> as <strong>filesystem</strong>.</p>
-</div>
-<div class="paragraph">
-<p>Hit <strong>Create</strong>. The system should respond as shown below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/008-image004.png" alt="Active PVC" width="500px">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3><strong>Attaching Storage to an Application</strong></h3>
-<div class="paragraph">
-<p>At this point we have a <strong>PVC</strong> owned by the projects. To confirm this click on the <strong>PersistentVolumeClaims</strong> link on the lefthand navigation panel. There should be a single PVC
-called <strong>examplestorage</strong> with a status of <strong>Bound</strong> and a capacity of <strong>1 GB</strong>.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>With some storage systems the PVC may remain as 'Pending' until it is used. This is not an issue; attaching the PVC to the Application, as you
-will now do, will instantiate and bind the storage</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>This piece of storage is now bound to the <em>project</em> but not bound to the <em>application</em>. To do that we need to add the Storage to the <strong>DeploymentConfig</strong>, telling OpenShift how to
-attach the file system into the Application itself.</p>
-</div>
-<div class="paragraph">
-<p>Click on <strong>Topology</strong>. Click on the Roundel for <strong>storageexample</strong>. Select the pulldown next to the <strong>DC</strong> storageexample and click <strong>Add storage</strong>.</p>
-</div>
-<div class="paragraph">
-<p>In the <strong>Add Storage</strong> dialog leave <strong>Use existing claim</strong> selected and click on <strong>Select claim</strong>. Choose <strong>examplestorage</strong>.</p>
+<p>Once the editor contains the text shown above click create.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -473,31 +425,35 @@ attach the file system into the Application itself.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can shortcut the process by creating the PVC in this dialo; we pre-created it to show the separate PVC components.</p>
+<p>What we have done is create a ConfigMap object within the Project. This can then be attached to an Application using the Deployment/DeploymentConfig which will
+expose the data within the ConfigMap into the Application as environment variables.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In the <strong>Mount path</strong> copy the text from below:</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">/ocpintro/test</code></pre>
-</div>
+<p>Now we are going to look at the existing environment variables in the Application in two ways.</p>
 </div>
 <div class="paragraph">
-<p>When you hit <strong>Save</strong> the <strong>DC</strong> will be displayed and the Application will be re-deployed. Watch the process, and then when the new version has completed click on the <strong>Pods</strong> tab on the <strong>DC</strong> panel.</p>
+<p>Switch back to the tab that has the page we rendered earlier in it. Remove the <strong>/getall</strong> from the end of the url and change it to <strong>/search?terms=test</strong>. Load the page.</p>
 </div>
-</div>
-<div class="sect2">
-<h3><strong>Consuming storage in an Application Pod</strong></h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>In the list of <strong>Pods</strong> there should be one running instance of the <strong>storageexample</strong>. Click on the name of this Pod.</p>
+<p>The Application has an endpoint, at <strong>/envs/search</strong>, which allows you to search for environment variables by substring of name; we have just searched for any environment variables with 'test' in the name (the search is case insensitive) and found none.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>In the <strong>Pod details</strong> panel click on the <strong>Terminal</strong> tab.</p>
+<p>Now we are going to use another feature of OpenShift; we can actually shell directly into the Container itself to examine file systems and settings.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -507,100 +463,94 @@ attach the file system into the Application itself.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The security settings for the Cluster will disconnect the Terminal window after a very short inactivity period. If it disconnects during this part of the Module simply click on <strong>Reconnect</strong>.</p>
+<p>Due to security settings the ability to log directly into the Container is time bound; it may disconnect whilst you are working in it (it has a very short timeout defined). If it does simply follow the instructions to log back in and repeat the commands.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In the Terminal apply the following commands:</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">df -h
-cd /ocpintro/test
-touch test.txt
-ls -al</code></pre>
-</div>
+<p>In the Topology page click on the Roundel for the envchecker Application. In the information panel click on <strong>Resources</strong>. In <strong>Pods</strong> click on the running Pod name.</p>
 </div>
 <div class="paragraph">
-<p>The resulting Terminal should look like this:</p>
+<p>The details for the Pod will now be displayed and look similar to below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/008-image005.png" alt="Terminal Output" width="550px">
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>By doing <strong>df -h</strong> you display the current file devices attached to the container; note the addition of one for <strong>/ocpintro/test</strong>.</p>
-</div>
-<div class="paragraph">
-<p>We have then created a file (albeit a 0 length file) using <strong>touch</strong> and done a directory listing to see it there.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The file is now available within the Container.</p>
-</div>
-</div>
-<div class="sect2">
-<h3><strong>Showing the ReadWriteOnce behaviour</strong></h3>
-<div class="paragraph">
-<p>Switch back to the <strong>Topology</strong> view. Click on the Roundel to display the <strong>DC</strong> storageexample. Click on the <strong>Details</strong> tab. Scale the Application up to two replicas by clicking on the up arrow next to the Roundel displayed
-in the <strong>DC</strong> panel.</p>
-</div>
-<div class="paragraph">
-<p>If you wait a little while then click on <strong>Observe</strong> on the lefthand panel. Switch to the <strong>Events</strong> tab. You should see an event that indicates a 'Multi-Attach' error. <strong>This is as expected</strong>. We set the
-behaviour of the <strong>PV</strong> to ReadWriteOnce, it can only be mounted to one active Container.</p>
-</div>
-<div class="paragraph">
-<p>Switch back to the <strong>Topology</strong> panel and following the instructions above set the number of replicas for the <strong>DC</strong> to 1 rather than 2.</p>
-</div>
-</div>
-<div class="sect2">
-<h3><strong>Demonstrating Storage Persistence</strong></h3>
-<div class="paragraph">
-<p>Now we are going to completely remove the running instances. Using the down arrow next to the Roundel in the <strong>DC</strong> panel reduce the number of replicas of the Application to <strong>0</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/008-image006.png" alt="Scaled down to 0" width="550px">
+<img src="_images/006-image003.png" alt="Pod details page">
 </div>
 </div>
 <div class="paragraph">
-<p>At this point there are no Applications active. Using the up arrow next to the Roundel in the <strong>DC</strong> panel increase the replicas back to <strong>1</strong>.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The Application is recreated from the original immutable Image. <strong>However</strong> the <strong>DC</strong> specifies a connection to the external storage via the PVC.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Click on the <strong>Resources</strong> tab in the <strong>DC</strong> panel and click on the single active <strong>Pod</strong> name. In the <strong>Pod details</strong> panel click on the <strong>Terminal</strong> tab. Execute the following commands:</p>
+<p>Now click on the <strong>Terminal</strong> tab. This will pen a direct terminal into the running pod. Enter the follow command (cut and paste from below):</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd /ocpintro/test
-ls -al</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">env | grep test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There will be no environment variables with the word 'test' in them.</p>
+</div>
+<div class="paragraph">
+<p>Switch back to the Topology page. On the righthand panel for the <strong>DC envchecker</strong> select the <strong>Actions</strong> menu and choose <strong>Edit DeploymentConfig</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Scroll down to <strong>Environment Variable</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that you have options to <strong>Add value</strong> and <strong>Add from ConfigMap or Secret</strong> - you can add environment variables directly into the DeploymentConfig without using a ConfigMap, but creating a ConfigMap allows you to have a consistent set of values <em>across many different Applications</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Click on <strong>Add from ConfigMap or Secret</strong>.</p>
+</div>
+<div class="paragraph">
+<p>In the name textbox put <strong>test1</strong>. Click on <strong>Select a Resource</strong> and type <strong>test</strong> in the searchbox; it will find the testconfigmap (marked by <strong>CM</strong>). Click on <strong>testconfigmap</strong>. Click on the
+<strong>Select a key</strong> pulldown and select test_variable1.</p>
+</div>
+<div class="paragraph">
+<p>Click on <strong>Add from ConfigMap or Secret</strong> again. It will add an additional entry point.</p>
+</div>
+<div class="paragraph">
+<p>Repeat the process above but this time create a variable called <strong>test2</strong> and assign it to test_variable2 from the configmap testconfigmap.</p>
+</div>
+<div class="paragraph">
+<p>Remove the empty environment variable entry point above the configmap ones by simply pressing on the (minus) symbol next to it.</p>
+</div>
+<div class="paragraph">
+<p>Now click <strong>Save</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You will be taken back to the Topology. If you are quick you&#8217;ll see the Pod being recreated; because we have changed the state of the DeploymentConfig OpenShift will automatically
+recreate the Pod to match the new DeploymentConfig, which contains the new environment variables exposed from the ConfigMap.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now if you switch back to the tab containing the lookup for the variables called 'test' and refresh the page you will now see that the Application has access to these environment variables.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/006-image004.png" alt="Variables found" width="500px">
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -611,7 +561,101 @@ ls -al</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The file created internally in the last Pod will still be there; the Pod has been recreated and reattached to the same physical storage point.</p>
+<p>Note that the <strong>names</strong> of the environment variables match the ones you entered as opposed to the names in the ConfigMap.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Updating ConfigMaps and Applications that consume them</strong></h3>
+<div class="paragraph">
+<p>Click on the <strong>ConfigMaps</strong> navigation link on the lefthand panel. Type <strong>test</strong> into the searchbar next to the pulldown (the pulldown will already say <strong>Name</strong>. This will display the ConfigMap you created. Click on the ConfigMap name (<strong>testconfigmap</strong>).</p>
+</div>
+<div class="paragraph">
+<p>Click on <strong>YAML</strong>. In the <strong>data</strong> section change the value for test_variable1 to <strong>This has now been changed</strong>. Hit <strong>Save</strong>. Click on <strong>Details</strong> and scroll down to <strong>Data</strong>. Note that the data has been changed for that field.</p>
+</div>
+<div class="paragraph">
+<p>Switch back to the tab containing the lookup and refresh.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The environment variables expressed to the Application have <strong>not</strong> changed. This is correct; the DeploymentConfig is only applied when the data within it changes, and this is not done by changing the root configmap.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Click on <strong>Topology</strong> and in the <strong>Actions</strong> pulldown for the <strong>DC</strong> on the righthand side select <strong>Start rollout</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This gets OpenShift to reload the DeploymentConfig. At this point the new environment variables will be applied.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Switch back to the tab containing the lookup and refresh.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you change the values in a ConfigMap and save them they are not auto-applied to the <em>existing</em> and <em>active</em> deployments. The nature of Kubernetes and OpenShift is that you haven&#8217;t
+changed the state of the DeploymentConfig so no update is required. Forcing a rollout makes OpenShift update the DeploymentConfig, which is then applied to the Application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>An interesting other-use of ConfigMaps is that the ConfigMaps can be applied as <em>files</em>; in this case the contents of the data component (the value rather than the key) are written into a file at a given point in the container. This is a very
+useful way of overwriting, say, a conf file. This is not a normal usecase but is supported.</p>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Further Exercises</strong></h3>
+<div class="paragraph">
+<p>These are completely optional but give you a chance to explore the concepts of the Module.</p>
+</div>
+<div class="paragraph">
+<p><strong>Create a second application and inject all three of the variables from the ConfigMap into it</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Add an environment variable directly into the DeploymentConfig. After the Application has deployed, edit the DeploymentConfig and change the value. Compare the behaviour to changing values in a ConfigMap</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Tidy the Module up by deleting all the components</strong></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Any changes directly to the value of an environment variable applied from the DeploymentConfig get applied instantly; the change to a value in the DeploymentConfig is deemed to be a state change and the Application will be redeployed to match the required state.</p>
 </div>
 </td>
 </tr>
@@ -637,9 +681,6 @@ ls -al</code></pre>
 <div class="paragraph">
 <p>To finish the Module head to the <strong>Topology page</strong>, click on each of the <strong>Application Groups</strong> (i.e. (A) config-app) and in the <strong>Actions</strong> menu on the righthand panel for the Application choose <strong>Delete Application</strong>.
 The system will prompt you to enter the name of the Application Group; enter this name and press return/hit <strong>Delete</strong>.</p>
-</div>
-<div class="paragraph">
-<p>Also go to the <strong>Storage</strong> panel (via your shortcut on the lefthand navigation panel). Remove the PVC if it remains (click on the three dot/kebab at the far right and choose <strong>Delete PersistentVolumeClaim</strong>).</p>
 </div>
 <div class="admonitionblock tip">
 <table>
