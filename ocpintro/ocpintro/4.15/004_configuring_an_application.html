@@ -317,7 +317,7 @@ in which additional information can be provided to a running Application to effe
 </table>
 </div>
 <div class="paragraph">
-<p>For the sake of simplicty we will use a similar Application to the one we used in previous Modules.</p>
+<p>For the sake of simplicity we will use a similar Application to the one we used in previous Modules.</p>
 </div>
 <div class="paragraph">
 <p>In the OpenShift UI make sure you are logged on, as stated in the pre-requisites and in the Project provided. Switch the UI to the Developer viewpoint using the selector in the top left.</p>
@@ -333,14 +333,14 @@ in which additional information can be provided to a running Application to effe
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ilawson/devex4</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/marrober/devex-terminal-4:full-terminal-1.5</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Click on the pulldown for the <strong>Application</strong> and select <strong>Create Application</strong>. In the <strong>Application Name</strong> textbox enter config-app. Set the <strong>Name</strong> to configexample.</p>
 </div>
 <div class="paragraph">
-<p>In <strong>Resources</strong> set the resource type to <strong>DeploymentConfig</strong>. Hit <strong>Create</strong> to start the Application creation and deployment.</p>
+<p>In <strong>Resources</strong> set the resource type to <strong>Deployment</strong>. Hit <strong>Create</strong> to start the Application creation and deployment.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -364,32 +364,9 @@ in which additional information can be provided to a running Application to effe
 </div>
 <div class="sect2">
 <h3><strong>Examining the Deployment Configuration for the Application</strong></h3>
-<div class="paragraph">
-<p>Click on the roundel for the Application. The panel that appears on the right of the Topology page will display the Deployment Configuration for the Application.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>OpenShift uses two Objects for defining how an Application is deployed; a <strong>Deployment</strong>, which is the standard Kubernetes definition of a deployment (Image location and replicas), or a <strong>DeploymentConfig</strong>, which is the extended OpenShift object.<br></p>
-</div>
-<div class="paragraph">
-<p>In this Module we will be examining and editing the DeploymentConfig created as part of the Application deployment.<br></p>
-</div>
-<div class="paragraph">
-<p>The panel that appears will have an icon with the letters <strong>DC</strong> on it at the title of the tab. These icons are shortcuts for the type of Object being displayed.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/004-image003.png" alt="DC sidepanel">
+<img src="_images/004-image003.png" alt="Deployment sidepanel">
 </div>
 </div>
 <div class="paragraph">
@@ -409,9 +386,7 @@ in which additional information can be provided to a running Application to effe
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Kubernetes and OpenShift have a concept called 'ReplicationControllers' which are tasked with making sure that the
-required number of replicas of an Application are running at all times. These replicas are exact copies of the Application from the Image (with
-separate Pods/file systems).<br></p>
+<p>Kubernetes and OpenShift have a concept called 'ReplicationControllers' which are tasked with making sure that the required number of replicas of an Application are running at all times. These replicas are exact copies of the Application from the Image (with separate Pods/file systems).<br></p>
 </div>
 <div class="paragraph">
 <p>As with all Kubernetes objects these replicas <em>reconcile</em> physically. They exist on the Worker nodes, which communicate back to the
@@ -463,7 +438,7 @@ dark blue (active).</p>
 <div class="sect2">
 <h3><strong>Changing the Deployment Strategy</strong></h3>
 <div class="paragraph">
-<p>One of the nice features about using the OpenShift <strong>DeploymentConfig</strong> is that it supports two distinct and different Deployment Strategies.</p>
+<p>One of the nice features about using the OpenShift <strong>Deployment</strong> is that it supports two distinct and different Deployment Strategies.</p>
 </div>
 <div class="paragraph">
 <p>These reflect two distinct world usecases; zero downtime upgrade and security specific upgrades.</p>
@@ -506,8 +481,8 @@ tab. It should state 'Scaled to 0'.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>In the right-hand panel for the <strong>DeploymentConfig</strong> you should see an indicator that this rollout is at version 1 (under the <strong>Latest version</strong> label). Select the <strong>Actions</strong> pulldown and
-choose <strong>Start Rollout</strong>. Carefully watch the Roundels in the right-hand panel.</p>
+<p>In the right-hand panel for the <strong>Deployment</strong> you should see an indicator that this rollout is at version 1 (under the <strong>Latest version</strong> label). Select the <strong>Actions</strong> pulldown and
+choose <strong>Restart Rollout</strong>. Carefully watch the Roundels in the right-hand panel.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -525,7 +500,7 @@ choose <strong>Start Rollout</strong>. Carefully watch the Roundels in the right
 <p>What you are seeing is as follows; the left-hand Roundel indicates the state of the previous rollout, the right-hand Roundel displays the new Rollout.<br></p>
 </div>
 <div class="paragraph">
-<p>The ReplicationController starts by spinning up one copy of the new Rollout - this could be a change to the code, a change to the DeploymentConfig, a change to the environment variables etc. When the single instance of the new deployment
+<p>The ReplicationController starts by spinning up one copy of the new Rollout - this could be a change to the code, a change to the Deployment configuration, a change to the environment variables etc. When the single instance of the new deployment
 has started correctly (the Roundel will go dark blue), the ReplicationController <strong>removes</strong> one of the old Pods.<br></p>
 </div>
 <div class="paragraph">
@@ -543,7 +518,10 @@ exist<br></p>
 </table>
 </div>
 <div class="paragraph">
-<p>Now choose <strong>Actions</strong> and then <strong>Edit DeploymentConfig</strong>.</p>
+<p>Scale the deployment to four pods. This is required to show the effect since OpenShift can rollout one pod very quickly. Try even more if you wish.</p>
+</div>
+<div class="paragraph">
+<p>Now choose <strong>Actions</strong> and then <strong>Edit Deployment</strong>.</p>
 </div>
 <div class="paragraph">
 <p>In the <strong>Deployment Strategy</strong> section change the <strong>Strategy type</strong> to <strong>Recreate</strong> (as shown below)</p>
@@ -554,7 +532,7 @@ exist<br></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Click <strong>Save</strong>. The UI will shift back to the topology page. Pull down the Actions menu again and click <strong>Start rollout</strong>. Watch carefully the Roundels in the right-hand information panel.</p>
+<p>Click <strong>Save</strong>. The UI will shift back to the topology page. Pull down the Actions menu again and click <strong>Restart rollout</strong>. Watch carefully the Roundels in the right-hand information panel. You can see that it scales down from four (or more) pods to zero and then starts to recreate the new pods. This results in downtime, albeit very little, as there are no pods for the application for a short period of time.</p>
 </div>
 <div class="imageblock">
 <div class="content">

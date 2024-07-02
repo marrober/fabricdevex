@@ -2,14 +2,12 @@
 
 :!sectids:
 
-image::001-image001.png[OpenShift]
-
 == *A High Level Introduction to OpenShift for Developers*
 
 ====
 *What will you learn?*
 
-This Module will give you an overview of what OpenShift actually is, and how it works.
+This Module will give you an overview of what OpenShift is, and how it works.
 
 This will involve explaining the Object model and Kubernetes. The Module is a non-interactive one and can be skipped if the Reader understands the basic concepts of Objects, Reconciliation, Eventually Consistent State and Containers/Pods.
 ====

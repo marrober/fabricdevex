@@ -414,7 +414,7 @@ exactly how to build the Image, and the ImageStream is an Object that contains m
 </table>
 </div>
 <div class="paragraph">
-<p>Click on 'Create Application' to start the process.</p>
+<p>Click on 'Create' to start the process.</p>
 </div>
 <div class="paragraph">
 <p>First note that there is a pulldown at the top of the form titled <strong>Builder Image Version</strong>. OpenShift S2I allows for the selection of which specific framework Image relating to a technology to use; in the case of the
@@ -434,7 +434,7 @@ OpenJDK Red Hat ships OpenJDK 17, 11 and 8 as options (the last part of the Imag
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/utherp0/bootcampapp</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/rh-uki-openshift-ssa/workshop-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -449,7 +449,7 @@ like myexample-app).</p>
 <p>The <strong>Name</strong> field will have been pre-populated with the name of the Git repo used. In the case of the OpenJDK one change the name to 'quarkus'.</p>
 </div>
 <div class="paragraph">
-<p>In the <strong>Resources</strong> section set the resource type to <strong>DeploymentConfig</strong>.</p>
+<p>In the <strong>Resources</strong> section set the resource type to <strong>Deployment</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Make sure the <strong>Create a route to the Application</strong> box is ticked.</p>
@@ -483,6 +483,20 @@ like myexample-app).</p>
 </div>
 <div class="paragraph">
 <p>We now have an Application running built from source code. With the OpenJDK one you can test this by clicking on the <strong>Route</strong> icon at the top right of the Roundel.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may get a certificate warning as the application does not have one.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>If you add the following code to the end of the URL you will see the endpoint responding with a second counter from call start:</p>

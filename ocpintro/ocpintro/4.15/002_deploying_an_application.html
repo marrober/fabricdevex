@@ -228,7 +228,7 @@
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="_images/002-image001.png" alt="Example Topology Image">
+<img src="_images/000-image001.png" alt="Example Topology Image">
 </div>
 </div>
 </div>
@@ -275,25 +275,6 @@ As the owner/user of a Project you have 'Admin' rights to it, meaning you can cr
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><strong>Please Read</strong> - if you are using a <strong>shared</strong> project you may encounter issues with naming; this is because Objects within a <strong>Project</strong> must be <em>uniquely</em> named. If someone
-else is doing this course in the same Project they may have created objects with the names stated.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>If you get an error when trying to create <em>anything</em> as part of this module, add "__(your initials)" to the end of the Name attribute for the object
-you are creating</strong></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3><strong>Creating the Application</strong></h3>
@@ -326,6 +307,9 @@ This Application provides an in-browser command line that we will use in later M
 </div>
 <div class="paragraph">
 <p>Switch the viewpoint to Developer (Top left pulldown).</p>
+</div>
+<div class="paragraph">
+<p>Ensure that you are in the correct project for you. Select 'Project' from the top of the screen and check that you are using the project called %PROJECT%. If you are not then click on 'Create project' and create a project of that name. It is important to use that name as all further instructions will reference it.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -366,7 +350,7 @@ This Application provides an in-browser command line that we will use in later M
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ilawson/devex4</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/marrober/devex-terminal-4:full-terminal-1.5</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -395,11 +379,10 @@ when pulling an Application from an external registry it will be pulled into the
 <p>Feel free to choose a Runtime Icon for the application from the pulldown; this will be displayed on the topology when the Application is created. It defaults to an OpenShift logo.</p>
 </div>
 <div class="paragraph">
-<p>In the <strong>General</strong> part of the form there are two textboxes; Application and Name. This is slightly confusing at first; OpenShift has the concept, on the UI, of an Application, which is short for
-Application Grouping. This is a cosmetic grouping of individual Applications, allowing you to perform high-level tasks on them.</p>
+<p>In the <strong>General</strong> part of the form there are two textboxes; 'Application name' and 'Name'. This is slightly confusing at first; OpenShift has the concept, on the UI, of an Application name, which is a grouping mechanism for related applications.</p>
 </div>
 <div class="paragraph">
-<p>Enter <strong>devex-app</strong> as the name of the new Application grouping.</p>
+<p>Enter <strong>devex-app</strong> as the name of the new Application name.</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -435,7 +418,7 @@ It makes it easy to determine and interact with them.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>In the <strong>Resources</strong> part of the form you are given a set of radio buttons to choose the resource type to generate. In this case it is a simple choice between a <strong>Deployment</strong> object or a <strong>DeploymentConfig</strong> object.</p>
+<p>In the <strong>Resources</strong> part of the form you are given a drop down field to choose the resource type to generate. In this case it is a simple choice between a <strong>Deployment</strong> object or a <strong>DeploymentConfig</strong> object.</p>
 </div>
 <div class="paragraph">
 <p>These components are very similar but provide slightly different functionality; a <strong>Deployment</strong> is a Kubernetes-native object that defines in simple terms how to deploy an application; you provide the Image from where to create the Application and the number of Replicas (all done for you automatically by OpenShift through this interface).</p>
@@ -444,7 +427,7 @@ It makes it easy to determine and interact with them.</p>
 <p>The <strong>DeploymentConfig</strong> is an OpenShift extension to the Kubernetes model and provides a lifecycle bound approach to doing a Deployment; this allows you to rollout and rollback different versions of your Deployment (whereas the Kubernetes Deployment is a single, temporally stamped version and retains no history of configuration differences).</p>
 </div>
 <div class="paragraph">
-<p>For this example choose <strong>DeploymentConfig</strong>.</p>
+<p>For this example choose <strong>Deployment</strong>.</p>
 </div>
 <div class="paragraph">
 <p>In the <strong>Advanced Options</strong> part of the form we have the extra bits that allow you to highly configure the application. For this example we are simply going to create a <strong>Route</strong>. The additional advanced options include adding Environment Variables, which we will cover in the module 'Injecting Configuration into Apps', Health Checks, Scaling, Resource Limits and Labels.</p>

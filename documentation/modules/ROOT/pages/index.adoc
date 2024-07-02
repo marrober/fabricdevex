@@ -14,7 +14,7 @@ The course is divided into a set of small, easy to consume, self-paced modules t
 
 Each Module contains a number of exercises to try, along with detailed explanations of what is being done. 
 
-In order to use the examples you must have a valid login to an OpenShift (4.11+) system and a Project in which to work
+In order to use the examples you must have a valid login to an OpenShift (4.15+) system and a Project in which to work
 
 The modules are self-paced. Within the description of the Modules there will be Tips and Notes; tips give hints as to what is being done, Notes go into more details about the exercises within the Module.
 

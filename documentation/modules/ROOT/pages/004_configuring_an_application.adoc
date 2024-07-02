@@ -47,7 +47,7 @@ running Containers; in this Module we will adjust the way in which OpenShift hos
 in which additional information can be provided to a running Application to effect the way in which it operates (using Config Maps and Environment Variables).
 ====
 
-For the sake of simplicty we will use a similar Application to the one we used in previous Modules.
+For the sake of simplicity we will use a similar Application to the one we used in previous Modules.
 
 In the OpenShift UI make sure you are logged on, as stated in the pre-requisites and in the Project provided. Switch the UI to the Developer viewpoint using the selector in the top left.
 
@@ -60,12 +60,12 @@ Leave the selection of Image on *Image name from external registry*. Copy (or ty
 [.console-input]
 [source,bash]
 ----
-quay.io/ilawson/devex4
+quay.io/marrober/devex-terminal-4:full-terminal-1.5
 ----
 
 Click on the pulldown for the *Application* and select *Create Application*. In the *Application Name* textbox enter config-app. Set the *Name* to configexample.
 
-In *Resources* set the resource type to *DeploymentConfig*. Hit *Create* to start the Application creation and deployment.
+In *Resources* set the resource type to *Deployment*. Hit *Create* to start the Application creation and deployment.
 
 [NOTE]
 ====
@@ -76,18 +76,8 @@ image::004-image002.png[Running example Application,width=300px]
 
 === *Examining the Deployment Configuration for the Application*
 
-Click on the roundel for the Application. The panel that appears on the right of the Topology page will display the Deployment Configuration for the Application.
 
-[NOTE]
-====
-OpenShift uses two Objects for defining how an Application is deployed; a *Deployment*, which is the standard Kubernetes definition of a deployment (Image location and replicas), or a *DeploymentConfig*, which is the extended OpenShift object. +
-
-In this Module we will be examining and editing the DeploymentConfig created as part of the Application deployment. +
-
-The panel that appears will have an icon with the letters *DC* on it at the title of the tab. These icons are shortcuts for the type of Object being displayed.
-====
-
-image::004-image003.png[DC sidepanel]
+image::004-image003.png[Deployment sidepanel]
 
 Click on the *Details* tab. This will switch the right-hand panel to show more information about the way in which the Application is deployed
 
@@ -97,9 +87,7 @@ In the Details tab you will see another Roundel; this one indicates the number o
 
 [NOTE]
 ====
-Kubernetes and OpenShift have a concept called 'ReplicationControllers' which are tasked with making sure that the
-required number of replicas of an Application are running at all times. These replicas are exact copies of the Application from the Image (with
-separate Pods/file systems). +
+Kubernetes and OpenShift have a concept called 'ReplicationControllers' which are tasked with making sure that the required number of replicas of an Application are running at all times. These replicas are exact copies of the Application from the Image (with separate Pods/file systems). +
 
 As with all Kubernetes objects these replicas __reconcile__ physically. They exist on the Worker nodes, which communicate back to the
 control plane of OpenShift through the __Kubelet__. If a replica fails or, for example, a Worker Node goes offline, the ReplicationController
@@ -126,7 +114,7 @@ Click on *Topology* again. On the right-hand panel click on *Details* again. Usi
 
 === *Changing the Deployment Strategy*
 
-One of the nice features about using the OpenShift *DeploymentConfig* is that it supports two distinct and different Deployment Strategies.
+One of the nice features about using the OpenShift *Deployment* is that it supports two distinct and different Deployment Strategies.
 
 These reflect two distinct world usecases; zero downtime upgrade and security specific upgrades.
 
@@ -151,8 +139,8 @@ Underneath the Roundel you will see an indicator that the Deployment has an upda
 Starting a Rollout forces the ReplicationController to redeploy the active replicas. We will see the different ways in which the rollout is applied depending on the Strategy chosen.
 ====
  
-In the right-hand panel for the *DeploymentConfig* you should see an indicator that this rollout is at version 1 (under the *Latest version* label). Select the *Actions* pulldown and 
-choose *Start Rollout*. Carefully watch the Roundels in the right-hand panel.
+In the right-hand panel for the *Deployment* you should see an indicator that this rollout is at version 1 (under the *Latest version* label). Select the *Actions* pulldown and 
+choose *Restart Rollout*. Carefully watch the Roundels in the right-hand panel.
 
 image::004-image008.png[Rolling rollout]
 
@@ -160,7 +148,7 @@ image::004-image008.png[Rolling rollout]
 ====
 What you are seeing is as follows; the left-hand Roundel indicates the state of the previous rollout, the right-hand Roundel displays the new Rollout. +
 
-The ReplicationController starts by spinning up one copy of the new Rollout - this could be a change to the code, a change to the DeploymentConfig, a change to the environment variables etc. When the single instance of the new deployment
+The ReplicationController starts by spinning up one copy of the new Rollout - this could be a change to the code, a change to the Deployment configuration, a change to the environment variables etc. When the single instance of the new deployment
 has started correctly (the Roundel will go dark blue), the ReplicationController *removes* one of the old Pods. +
 
 At *all* points the count of active Pods, a mix of new and old, equals or just exceeds the required number of replicas. +
@@ -171,13 +159,16 @@ exist +
 This gives the *zero downtime* functionality
 ====
 
-Now choose *Actions* and then *Edit DeploymentConfig*.
+Scale the deployment to four pods. This is required to show the effect since OpenShift can rollout one pod very quickly. Try even more if you wish.
+
+
+Now choose *Actions* and then *Edit Deployment*.
 
 In the *Deployment Strategy* section change the *Strategy type* to *Recreate* (as shown below)
 
 image::004-image007.png[Choosing the Recreate strategy,width=400px]
 
-Click *Save*. The UI will shift back to the topology page. Pull down the Actions menu again and click *Start rollout*. Watch carefully the Roundels in the right-hand information panel.
+Click *Save*. The UI will shift back to the topology page. Pull down the Actions menu again and click *Restart rollout*. Watch carefully the Roundels in the right-hand information panel. You can see that it scales down from four (or more) pods to zero and then starts to recreate the new pods. This results in downtime, albeit very little, as there are no pods for the application for a short period of time.
 
 image::004-image009.png[Recreate rollout]
 

@@ -2,7 +2,7 @@
 
 :!sectids:
 
-image::002-image001.png[Example Topology Image]
+image::000-image001.png[Example Topology Image]
 
 == *Deploying an Application to OpenShift*
 
@@ -28,15 +28,6 @@ A *Project* is an OpenShift object that contains all of your Applications and ot
 As the owner/user of a Project you have 'Admin' rights to it, meaning you can create any of the OpenShift objects that you have the rights to create within it.  
 ====
 
-[WARNING]
-====
-*Please Read* - if you are using a *shared* project you may encounter issues with naming; this is because Objects within a *Project* must be _uniquely_ named. If someone
-else is doing this course in the same Project they may have created objects with the names stated. +
-
-*If you get an error when trying to create _anything_ as part of this module, add "__(your initials)" to the end of the Name attribute for the object
-you are creating*
-====
-
 === *Creating the Application*
 
 OpenShift provides two *viewpoints* within the User Interface. The first is *Administrator*, which gives you a drill-down overview, categorised, of the Objects and Components you have access to.
@@ -54,6 +45,8 @@ This Application provides an in-browser command line that we will use in later M
 ====
 
 Switch the viewpoint to Developer (Top left pulldown). 
+
+Ensure that you are in the correct project for you. Select 'Project' from the top of the screen and check that you are using the project called %PROJECT%. If you are not then click on 'Create project' and create a project of that name. It is important to use that name as all further instructions will reference it.
 
 [NOTE]
 ====
@@ -74,7 +67,7 @@ You will be provided with a wizard template for creating an Application from an 
 [.console-input]
 [source,bash]
 ----
-quay.io/ilawson/devex4
+quay.io/marrober/devex-terminal-4:full-terminal-1.5
 ----
 
 Copy the contents of the field above and paste them into the text area beneath *Image name from external registry* which should be selected by default (if it is not, select this option before pasting the target image location in.
@@ -90,10 +83,9 @@ Once you have entered the field contents you should get a message saying *Valida
 
 Feel free to choose a Runtime Icon for the application from the pulldown; this will be displayed on the topology when the Application is created. It defaults to an OpenShift logo.
 
-In the *General* part of the form there are two textboxes; Application and Name. This is slightly confusing at first; OpenShift has the concept, on the UI, of an Application, which is short for
-Application Grouping. This is a cosmetic grouping of individual Applications, allowing you to perform high-level tasks on them. 
+In the *General* part of the form there are two textboxes; 'Application name' and 'Name'. This is slightly confusing at first; OpenShift has the concept, on the UI, of an Application name, which is a grouping mechanism for related applications. 
 
-Enter *devex-app* as the name of the new Application grouping.
+Enter *devex-app* as the name of the new Application name.
 
 [CAUTION]
 ====
@@ -109,13 +101,13 @@ It's actually useful that all the component objects for the Application, of diff
 It makes it easy to determine and interact with them.
 ====
 
-In the *Resources* part of the form you are given a set of radio buttons to choose the resource type to generate. In this case it is a simple choice between a *Deployment* object or a *DeploymentConfig* object.
+In the *Resources* part of the form you are given a drop down field to choose the resource type to generate. In this case it is a simple choice between a *Deployment* object or a *DeploymentConfig* object.
 
 These components are very similar but provide slightly different functionality; a *Deployment* is a Kubernetes-native object that defines in simple terms how to deploy an application; you provide the Image from where to create the Application and the number of Replicas (all done for you automatically by OpenShift through this interface).
 
 The *DeploymentConfig* is an OpenShift extension to the Kubernetes model and provides a lifecycle bound approach to doing a Deployment; this allows you to rollout and rollback different versions of your Deployment (whereas the Kubernetes Deployment is a single, temporally stamped version and retains no history of configuration differences).
 
-For this example choose *DeploymentConfig*. 
+For this example choose *Deployment*. 
 
 In the *Advanced Options* part of the form we have the extra bits that allow you to highly configure the application. For this example we are simply going to create a *Route*. The additional advanced options include adding Environment Variables, which we will cover in the module 'Injecting Configuration into Apps', Health Checks, Scaling, Resource Limits and Labels.
 

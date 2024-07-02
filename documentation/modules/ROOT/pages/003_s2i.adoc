@@ -95,7 +95,7 @@ Note that in the case of creating from Source you get a BuildConfig in addition 
 exactly how to build the Image, and the ImageStream is an Object that contains metadata as to where that created Image is placed. 
 ====
 
-Click on 'Create Application' to start the process.
+Click on 'Create' to start the process.
 
 First note that there is a pulldown at the top of the form titled *Builder Image Version*. OpenShift S2I allows for the selection of which specific framework Image relating to a technology to use; in the case of the 
 OpenJDK Red Hat ships OpenJDK 17, 11 and 8 as options (the last part of the Image name refers to the underlying OS used in the framework Container - for instance
@@ -110,7 +110,7 @@ Copy the following text into the *'Git Repo URL'* field (if you are using a diff
 [.console-input]
 [source,bash]
 ----
-https://github.com/utherp0/bootcampapp
+https://github.com/rh-uki-openshift-ssa/workshop-app
 ----
 
 Once you have entered this data, or in the case of another Builder Image, the interface should indicate the URL is Validated.
@@ -121,7 +121,7 @@ like myexample-app).
 
 The *Name* field will have been pre-populated with the name of the Git repo used. In the case of the OpenJDK one change the name to 'quarkus'.
 
-In the *Resources* section set the resource type to *DeploymentConfig*.
+In the *Resources* section set the resource type to *Deployment*.
 
 Make sure the *Create a route to the Application* box is ticked.
 
@@ -140,6 +140,11 @@ When watching the log you will see the Source-2-Image doing its magic. It will d
 Once the build completes the Deployment takes over; this takes the Image generated and stored in the Integrated Registry and instantiates an Application with it.
 
 We now have an Application running built from source code. With the OpenJDK one you can test this by clicking on the *Route* icon at the top right of the Roundel. 
+
+[NOTE]
+====
+You may get a certificate warning as the application does not have one.
+====
 
 If you add the following code to the end of the URL you will see the endpoint responding with a second counter from call start:
 
