@@ -46,10 +46,10 @@ Make sure you are at the Developer Viewpoint and viewing the *Topology* page. Cl
 [.console-input]
 [source,bash]
 ----
-https://github.com/utherp0/envchecker
+https://github.com/rh-uki-openshift-ssa/envchecker
 ----
 
-Set the *Application* (which is the Application Grouping) to *config-app* by selecting *Create Application* from the pulldown and entering config-app into the textbox. Leave the name as *envchecker*. Set the *Resource* type to generate to *DeploymentConfig*. Hit *Create* to start the build.
+Set the *Application* (which is the Application Grouping) to *config-app*. If this option is not already available as a result of a prior activity, you can create it by selecting *Create Application* from the pulldown and entering config-app into the textbox. Leave the name as *envchecker*. Ensure the *Resource* type to generate to *Deployment*. Hit *Create* to start the build.
 
 Once the build has completed successfully the Application Roundel should appear as shown below:
 
@@ -121,7 +121,13 @@ expose the data within the ConfigMap into the Application as environment variabl
 
 Now we are going to look at the existing environment variables in the Application in two ways.
 
-Switch back to the tab that has the page we rendered earlier in it. Remove the */getall* from the end of the url and change it to */search?terms=test*. Load the page.
+Switch back to the tab that has the page we rendered earlier in it. Remove the */getall* from the end of the url and change it to 
+
+[.console-input]
+[source,bash]
+----
+/search?terms=test
+----
 
 [TIP]
 ====

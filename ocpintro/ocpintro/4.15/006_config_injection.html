@@ -306,11 +306,11 @@ and searching the environment variables exposed to the Container.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/utherp0/envchecker</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/rh-uki-openshift-ssa/envchecker</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Set the <strong>Application</strong> (which is the Application Grouping) to <strong>config-app</strong> by selecting <strong>Create Application</strong> from the pulldown and entering config-app into the textbox. Leave the name as <strong>envchecker</strong>. Set the <strong>Resource</strong> type to generate to <strong>DeploymentConfig</strong>. Hit <strong>Create</strong> to start the build.</p>
+<p>Set the <strong>Application</strong> (which is the Application Grouping) to <strong>config-app</strong>. If this option is not already available as a result of a prior activity, you can create it by selecting <strong>Create Application</strong> from the pulldown and entering config-app into the textbox. Leave the name as <strong>envchecker</strong>. Ensure the <strong>Resource</strong> type to generate to <strong>Deployment</strong>. Hit <strong>Create</strong> to start the build.</p>
 </div>
 <div class="paragraph">
 <p>Once the build has completed successfully the Application Roundel should appear as shown below:</p>
@@ -436,7 +436,12 @@ expose the data within the ConfigMap into the Application as environment variabl
 <p>Now we are going to look at the existing environment variables in the Application in two ways.</p>
 </div>
 <div class="paragraph">
-<p>Switch back to the tab that has the page we rendered earlier in it. Remove the <strong>/getall</strong> from the end of the url and change it to <strong>/search?terms=test</strong>. Load the page.</p>
+<p>Switch back to the tab that has the page we rendered earlier in it. Remove the <strong>/getall</strong> from the end of the url and change it to</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">/search?terms=test</code></pre>
+</div>
 </div>
 <div class="admonitionblock tip">
 <table>
