@@ -62,7 +62,14 @@ https://console-openshift-console.%CLUSTER_SUBDOMAIN%/
 
 Copy the above URL using the button to the right of the text and paste it into a new browser tab. This way you can keep the instructions and the workspace open at the same time.
 
-Your username has already been given to you by the course facilitator. All users have the same password which is 'openshift'.
+When you login to OpenShift you are presented with a number of options for how to authenticate. Select the option *htpasswd* as shown below.
+
+image::login-htpasswd.png[Selecting auth mechanism,800,align="center"]
+
+
+Your username has already been selected and is in the format 'userxxx' for example, user003 or user134. All users have the same password which is *openshift*.
+
+Once you are logged in you should be taken to your default project that matches your username.
 
 ==== Command line interface
 
