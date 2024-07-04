@@ -43,7 +43,7 @@ First we will setup three simple Applications within the Project. Make sure you 
 [.console-input]
 [source,bash]
 ----
-quay.io/ilawson/devex4
+quay.io/marrober/devex-terminal-4:full-terminal-1.5
 ----
 
 In *Application* choose *Create Application* and give it the name *networking-app*. Change the *Name* to *application1*. Hit *Create*.
@@ -53,12 +53,12 @@ Click *+Add* again. Choose *Import from Git*. Copy the text from below into the 
 [.console-input]
 [source,bash]
 ----
-https://github.com/utherp0/bootcampapp
+https://github.com/rh-uki-openshift-ssa/workshop-app
 ----
 
 Choose *networking-app* from the *Application* pulldown. Set the *Name* to *application2*. Click *Create*.
 
-Click *+Add* again. Click on *All services*. Click on the *.NET* Builder Image. Click *Create Application*. Under the *Git Repo URL* pulldown click on *Try sample*. In *Application*
+Click *+Add* again. Click on *All services*. Click on the *.NET* Builder Image. Click *Create*. Under the *Git Repo URL* pulldown click on *Try sample*. In *Application*
 select the *networking-app* option. Give it the *Name* *application3*. Hit *Create*.
 
 image::009-image002.png[The Module Applications,width=550px]
@@ -108,7 +108,7 @@ You will see a list of Services with pertinent information about them listed.
 [NOTE]
 ====
 Here's where it gets interesting. Each of the Services is named after the application it is linked to; when we created the applications giving them a name assigned
-that name to all objects tied to that Application, for instance *DeploymentConfig*, *Services*, etc. +
+that name to all objects tied to that Application, for instance *Deployment*, *Services*, etc. +
 
 The OpenShift SDN provides _resolvable_ DNS entries for all the Services within the Project _by name_. In English it means that, local to the Project, all Applications
 can *directly* reference the Services by name only, which is what we will now prove
@@ -132,6 +132,8 @@ curl http://application2:8080
 
 What you will see is a set of HTML; this is the output of the Application *application2*. Using the 'curl' command we have done a URI pull directly. 
 
+Switch back to the Topology view and select the deployment roundel for Application3. Select the pod for this application and enter a terminal.
+
 Now type:
 
 [.console-input]
@@ -141,6 +143,14 @@ env | grep APPLICATION2
 ----
 
 OpenShift also injects a lot of connectivity information directly into the other Applications for the Service endpoints; note the definitions of protocols, ports and IP addresses.
+
+Filter the output a little with the command:
+
+[.console-input]
+[source,bash]
+----
+env | grep APPLICATION2 | grep TCP=tcp://
+----
 
 [TIP]
 ====
@@ -167,7 +177,7 @@ Click on *Terminal*. Now enter the following command:
 [.console-input]
 [source,bash]
 ----
-curl http://application3.redhat-training.svc.cluster.local:8080
+curl http://application1.%PROJECT%.svc.cluster.local:8080
 ----
 
 [TIP]
@@ -175,7 +185,7 @@ curl http://application3.redhat-training.svc.cluster.local:8080
 The format of the FQDN for internal communications with Applications in _any Project you have visibility of_ is (service name).(project name).*svc.cluster.local*
 ====
 
-You should see the HTML output of the *application3* application via the *application3* service.
+You should see the HTML output of the *application1* application via the *application1* service.
 
 [TIP]
 ====

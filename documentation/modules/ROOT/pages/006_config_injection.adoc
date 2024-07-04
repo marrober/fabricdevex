@@ -115,7 +115,7 @@ Once the editor contains the text shown above click create.
 
 [TIP]
 ====
-What we have done is create a ConfigMap object within the Project. This can then be attached to an Application using the Deployment/DeploymentConfig which will
+What we have done is create a ConfigMap object within the Project. This can then be attached to an Application using the Deployment which will
 expose the data within the ConfigMap into the Application as environment variables.
 ====
 
@@ -157,13 +157,13 @@ env | grep test
 
 There will be no environment variables with the word 'test' in them.
 
-Switch back to the Topology page. On the righthand panel for the *DC envchecker* select the *Actions* menu and choose *Edit DeploymentConfig*.
+Switch back to the Topology page. On the righthand panel for the *D envchecker* select the *Actions* menu and choose *Edit Deployment*.
 
 Scroll down to *Environment Variable*.
 
 [TIP]
 ====
-Note that you have options to *Add value* and *Add from ConfigMap or Secret* - you can add environment variables directly into the DeploymentConfig without using a ConfigMap, but creating a ConfigMap allows you to have a consistent set of values _across many different Applications_.
+Note that you have options to *Add value* and *Add from ConfigMap or Secret* - you can add environment variables directly into the Deployment without using a ConfigMap, but creating a ConfigMap allows you to have a consistent set of values _across many different Applications_.
 ====
 
 Click on *Add from ConfigMap or Secret*.
@@ -181,8 +181,8 @@ Now click *Save*.
 
 [TIP]
 ====
-You will be taken back to the Topology. If you are quick you'll see the Pod being recreated; because we have changed the state of the DeploymentConfig OpenShift will automatically
-recreate the Pod to match the new DeploymentConfig, which contains the new environment variables exposed from the ConfigMap.
+You will be taken back to the Topology. If you are quick you'll see the Pod being recreated; because we have changed the state of the Deployment OpenShift will automatically
+recreate the Pod to match the new Deployment, which contains the new environment variables exposed from the ConfigMap.
 ====
 
 Now if you switch back to the tab containing the lookup for the variables called 'test' and refresh the page you will now see that the Application has access to these environment variables.
@@ -204,14 +204,14 @@ Switch back to the tab containing the lookup and refresh.
 
 [TIP]
 ====
-The environment variables expressed to the Application have *not* changed. This is correct; the DeploymentConfig is only applied when the data within it changes, and this is not done by changing the root configmap.
+The environment variables expressed to the Application have *not* changed. This is correct; the Deployment is only applied when the data within it changes, and this is not done by changing the root configmap.
 ====
 
 Click on *Topology* and in the *Actions* pulldown for the *DC* on the righthand side select *Start rollout*.
 
 [TIP]
 ====
-This gets OpenShift to reload the DeploymentConfig. At this point the new environment variables will be applied.
+This gets OpenShift to reload the Deployment. At this point the new environment variables will be applied.
 ====
 
 Switch back to the tab containing the lookup and refresh.
@@ -219,7 +219,7 @@ Switch back to the tab containing the lookup and refresh.
 [WARNING]
 ====
 If you change the values in a ConfigMap and save them they are not auto-applied to the _existing_ and _active_ deployments. The nature of Kubernetes and OpenShift is that you haven't
-changed the state of the DeploymentConfig so no update is required. Forcing a rollout makes OpenShift update the DeploymentConfig, which is then applied to the Application.
+changed the state of the Deployment so no update is required. Forcing a rollout makes OpenShift update the Deployment, which is then applied to the Application.
 ====
 
 An interesting other-use of ConfigMaps is that the ConfigMaps can be applied as _files_; in this case the contents of the data component (the value rather than the key) are written into a file at a given point in the container. This is a very
@@ -231,13 +231,13 @@ These are completely optional but give you a chance to explore the concepts of t
 
 *Create a second application and inject all three of the variables from the ConfigMap into it*
 
-*Add an environment variable directly into the DeploymentConfig. After the Application has deployed, edit the DeploymentConfig and change the value. Compare the behaviour to changing values in a ConfigMap*
+*Add an environment variable directly into the Deployment. After the Application has deployed, edit the Deployment and change the value. Compare the behaviour to changing values in a ConfigMap*
 
 *Tidy the Module up by deleting all the components*
 
 [TIP]
 ====
-Any changes directly to the value of an environment variable applied from the DeploymentConfig get applied instantly; the change to a value in the DeploymentConfig is deemed to be a state change and the Application will be redeployed to match the required state.
+Any changes directly to the value of an environment variable applied from the Deployment get applied instantly; the change to a value in the Deployment is deemed to be a state change and the Application will be redeployed to match the required state.
 ====
 
 === Cleaning up

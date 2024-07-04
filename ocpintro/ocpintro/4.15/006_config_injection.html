@@ -425,7 +425,7 @@ data:
 </td>
 <td class="content">
 <div class="paragraph">
-<p>What we have done is create a ConfigMap object within the Project. This can then be attached to an Application using the Deployment/DeploymentConfig which will
+<p>What we have done is create a ConfigMap object within the Project. This can then be attached to an Application using the Deployment which will
 expose the data within the ConfigMap into the Application as environment variables.</p>
 </div>
 </td>
@@ -497,7 +497,7 @@ expose the data within the ConfigMap into the Application as environment variabl
 <p>There will be no environment variables with the word 'test' in them.</p>
 </div>
 <div class="paragraph">
-<p>Switch back to the Topology page. On the righthand panel for the <strong>DC envchecker</strong> select the <strong>Actions</strong> menu and choose <strong>Edit DeploymentConfig</strong>.</p>
+<p>Switch back to the Topology page. On the righthand panel for the <strong>D envchecker</strong> select the <strong>Actions</strong> menu and choose <strong>Edit Deployment</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Scroll down to <strong>Environment Variable</strong>.</p>
@@ -510,7 +510,7 @@ expose the data within the ConfigMap into the Application as environment variabl
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Note that you have options to <strong>Add value</strong> and <strong>Add from ConfigMap or Secret</strong> - you can add environment variables directly into the DeploymentConfig without using a ConfigMap, but creating a ConfigMap allows you to have a consistent set of values <em>across many different Applications</em>.</p>
+<p>Note that you have options to <strong>Add value</strong> and <strong>Add from ConfigMap or Secret</strong> - you can add environment variables directly into the Deployment without using a ConfigMap, but creating a ConfigMap allows you to have a consistent set of values <em>across many different Applications</em>.</p>
 </div>
 </td>
 </tr>
@@ -543,8 +543,8 @@ expose the data within the ConfigMap into the Application as environment variabl
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You will be taken back to the Topology. If you are quick you&#8217;ll see the Pod being recreated; because we have changed the state of the DeploymentConfig OpenShift will automatically
-recreate the Pod to match the new DeploymentConfig, which contains the new environment variables exposed from the ConfigMap.</p>
+<p>You will be taken back to the Topology. If you are quick you&#8217;ll see the Pod being recreated; because we have changed the state of the Deployment OpenShift will automatically
+recreate the Pod to match the new Deployment, which contains the new environment variables exposed from the ConfigMap.</p>
 </div>
 </td>
 </tr>
@@ -592,7 +592,7 @@ recreate the Pod to match the new DeploymentConfig, which contains the new envir
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The environment variables expressed to the Application have <strong>not</strong> changed. This is correct; the DeploymentConfig is only applied when the data within it changes, and this is not done by changing the root configmap.</p>
+<p>The environment variables expressed to the Application have <strong>not</strong> changed. This is correct; the Deployment is only applied when the data within it changes, and this is not done by changing the root configmap.</p>
 </div>
 </td>
 </tr>
@@ -609,7 +609,7 @@ recreate the Pod to match the new DeploymentConfig, which contains the new envir
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This gets OpenShift to reload the DeploymentConfig. At this point the new environment variables will be applied.</p>
+<p>This gets OpenShift to reload the Deployment. At this point the new environment variables will be applied.</p>
 </div>
 </td>
 </tr>
@@ -627,7 +627,7 @@ recreate the Pod to match the new DeploymentConfig, which contains the new envir
 <td class="content">
 <div class="paragraph">
 <p>If you change the values in a ConfigMap and save them they are not auto-applied to the <em>existing</em> and <em>active</em> deployments. The nature of Kubernetes and OpenShift is that you haven&#8217;t
-changed the state of the DeploymentConfig so no update is required. Forcing a rollout makes OpenShift update the DeploymentConfig, which is then applied to the Application.</p>
+changed the state of the Deployment so no update is required. Forcing a rollout makes OpenShift update the Deployment, which is then applied to the Application.</p>
 </div>
 </td>
 </tr>
@@ -647,7 +647,7 @@ useful way of overwriting, say, a conf file. This is not a normal usecase but is
 <p><strong>Create a second application and inject all three of the variables from the ConfigMap into it</strong></p>
 </div>
 <div class="paragraph">
-<p><strong>Add an environment variable directly into the DeploymentConfig. After the Application has deployed, edit the DeploymentConfig and change the value. Compare the behaviour to changing values in a ConfigMap</strong></p>
+<p><strong>Add an environment variable directly into the Deployment. After the Application has deployed, edit the Deployment and change the value. Compare the behaviour to changing values in a ConfigMap</strong></p>
 </div>
 <div class="paragraph">
 <p><strong>Tidy the Module up by deleting all the components</strong></p>
@@ -660,7 +660,7 @@ useful way of overwriting, say, a conf file. This is not a normal usecase but is
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Any changes directly to the value of an environment variable applied from the DeploymentConfig get applied instantly; the change to a value in the DeploymentConfig is deemed to be a state change and the Application will be redeployed to match the required state.</p>
+<p>Any changes directly to the value of an environment variable applied from the Deployment get applied instantly; the change to a value in the Deployment is deemed to be a state change and the Application will be redeployed to match the required state.</p>
 </div>
 </td>
 </tr>

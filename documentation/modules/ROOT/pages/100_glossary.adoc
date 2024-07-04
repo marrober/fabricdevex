@@ -34,9 +34,6 @@ OpenShift and Kubernetes have a lot of technical concepts; this page contains de
 |*Deployment*
 |A Deployment object is a kubernetes-native object that defines in very simple terms how you deploy an 'Application'. It consists of the Image to use for the Application and the number of replicas (copies) to deploy
 
-|*DeploymentConfig*
-|A DeploymentConfig object is an OpenShift specific Object that extends upon the concept of the Deployment object. It provides a temporal concept of rollouts (allowing you to rollback deployments) and different modes of rollout supporting zero-downtime ('rolling') and full removal before recreate ('recreate').
-
 |*Labels*
 |All Objects in OpenShift support labelling. These provide a way of attaching contextual information to the Objects that make up your Applications, and these can be used by the system itself for physical placement of Applications and configuration of Applications
 

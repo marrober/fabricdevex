@@ -45,10 +45,10 @@ Make sure you are at the Developer Viewpoint and viewing the *Topology* page. Cl
 [.console-input]
 [source,bash]
 ----
-https://github.com/utherp0/envchecker
+https://github.com/rh-uki-openshift-ssa/envchecker
 ----
 
-Set the *Application* (which is the Application Grouping) to *storage-app* by selecting *Create Application* from the pulldown and entering storage-app into the textbox. Change the name to *storageexample*. Set the *Resource* type to generate to *DeploymentConfig*. Hit *Create* to start the build.
+Set the *Application* (which is the Application Grouping) to *storage-app* by selecting *Create Application* from the pulldown and entering storage-app into the textbox. Change the name to *storageexample*. Set the *Resource* type to generate to *Deployment*. Hit *Create* to start the build.
 
 === *Creating Storage for Consumption*
 
@@ -80,8 +80,7 @@ We are now going to create a pot of storage for our Application to use.
 
 [TIP]
 ====
-We are also going to take advantage of a useful feature of the Developer interface; you can *search* for objects of a certain type and then add them to the lefthand havigation panel. For
-ease of use we are going to do this for the *PVC* *Persistent Volume Claims*.
+We are also going to take advantage of a useful feature of the Developer interface; you can *search* for objects of a certain type and then add them to the lefthand havigation panel. For ease of use we are going to do this for the *PVC* *Persistent Volume Claims*.
 ====
 
 Click on *Search* on the lefthand panel. Click on the *Resources* pulldown. Enter *PVC* in the search box. Click on the *PVC* option. The panel will show as below:
@@ -136,16 +135,16 @@ With some storage systems the PVC may remain as 'Pending' until it is used. This
 will now do, will instantiate and bind the storage
 ====
 
-This piece of storage is now bound to the _project_ but not bound to the _application_. To do that we need to add the Storage to the *DeploymentConfig*, telling OpenShift how to 
+This piece of storage is now bound to the _project_ but not bound to the _application_. To do that we need to add the Storage to the *Deployment*, telling OpenShift how to 
 attach the file system into the Application itself.
 
-Click on *Topology*. Click on the Roundel for *storageexample*. Select the pulldown next to the *DC* storageexample and click *Add storage*.
+Click on *Topology*. Click on the Roundel for *storageexample*. Select the *Actions* pulldown next to the *D* storageexample and click *Add storage*.
 
 In the *Add Storage* dialog leave *Use existing claim* selected and click on *Select claim*. Choose *examplestorage*.
 
 [TIP]
 ====
-You can shortcut the process by creating the PVC in this dialo; we pre-created it to show the separate PVC components.
+You can shortcut the process by creating the PVC in this dialog; we pre-created it to show the separate PVC components.
 ====
 
 In the *Mount path* copy the text from below:
@@ -156,7 +155,7 @@ In the *Mount path* copy the text from below:
 /ocpintro/test
 ----
 
-When you hit *Save* the *DC* will be displayed and the Application will be re-deployed. Watch the process, and then when the new version has completed click on the *Pods* tab on the *DC* panel.
+When you hit *Save* the deployment will be displayed and the Application will be re-deployed. Watch the process, and then when the new version has completed click on the *Pods* tab on the deployment panel.
 
 === *Consuming storage in an Application Pod* 
 
@@ -195,28 +194,27 @@ The file is now available within the Container.
 
 === *Showing the ReadWriteOnce behaviour*
 
-Switch back to the *Topology* view. Click on the Roundel to display the *DC* storageexample. Click on the *Details* tab. Scale the Application up to two replicas by clicking on the up arrow next to the Roundel displayed
-in the *DC* panel.
+Switch back to the *Topology* view. Click on the Roundel to display the deployment storageexample. Click on the *Details* tab. Scale the Application up to two replicas by clicking on the up arrow next to the Roundel displayed
+in the deployment panel.
 
-If you wait a little while then click on *Observe* on the lefthand panel. Switch to the *Events* tab. You should see an event that indicates a 'Multi-Attach' error. *This is as expected*. We set the
-behaviour of the *PV* to ReadWriteOnce, it can only be mounted to one active Container.
+If you wait a little while then click on *Observe* on the lefthand panel  (not the observe section of the deployment details). Switch to the *Events* tab. You should see an event that indicates a 'Multi-Attach' error. *This is as expected*. We set the behaviour of the *PV* to ReadWriteOnce, it can only be mounted to one active Container.
 
-Switch back to the *Topology* panel and following the instructions above set the number of replicas for the *DC* to 1 rather than 2.
+Switch back to the *Topology* panel and following the instructions above set the number of replicas for the deployment to 1 rather than 2.
 
 === *Demonstrating Storage Persistence*
 
-Now we are going to completely remove the running instances. Using the down arrow next to the Roundel in the *DC* panel reduce the number of replicas of the Application to *0*.
+Now we are going to completely remove the running instances. Using the down arrow next to the Roundel in the deployment panel reduce the number of replicas of the Application to *0*.f
 
 image::008-image006.png[Scaled down to 0,width=550px]
 
-At this point there are no Applications active. Using the up arrow next to the Roundel in the *DC* panel increase the replicas back to *1*.
+At this point there are no Applications active. Using the up arrow next to the Roundel in the deployment panel increase the replicas back to *1*.
 
 [TIP]
 ====
-The Application is recreated from the original immutable Image. *However* the *DC* specifies a connection to the external storage via the PVC.
+The Application is recreated from the original immutable Image. *However* the deployment specifies a connection to the external storage via the PVC.
 ====
 
-Click on the *Resources* tab in the *DC* panel and click on the single active *Pod* name. In the *Pod details* panel click on the *Terminal* tab. Execute the following commands:
+Click on the *Resources* tab in the deployment panel and click on the single active *Pod* name. In the *Pod details* panel click on the *Terminal* tab. Execute the following commands:
 
 [.console-input]
 [source,bash]
@@ -237,10 +235,10 @@ The file created internally in the last Pod will still be there; the Pod has bee
 When you create Applications in OpenShift they will remain resident until you remove them
 ====
 
-To finish the Module head to the *Topology page*, click on each of the *Application Groups* (i.e. (A) config-app) and in the *Actions* menu on the righthand panel for the Application choose *Delete Application*.
+To finish the Module head to the *Topology page*, click on each of the *Application Groups* (i.e. (A) storage-app) and in the *Actions* menu on the righthand panel for the Application choose *Delete Application*.
 The system will prompt you to enter the name of the Application Group; enter this name and press return/hit *Delete*.
 
-Also go to the *Storage* panel (via your shortcut on the lefthand navigation panel). Remove the PVC if it remains (click on the three dot/kebab at the far right and choose *Delete PersistentVolumeClaim*). 
+Also go to the *PersistentVolumeClaims* panel (via your shortcut on the lefthand navigation panel). Remove the PVC if it remains (click on the three dot/kebab at the far right and choose *Delete PersistentVolumeClaim*). 
 
 [TIP]
 ====

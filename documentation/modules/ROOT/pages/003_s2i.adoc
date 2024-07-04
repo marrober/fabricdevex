@@ -56,13 +56,12 @@ Source-2-Image actually works by running a build container behind the scenes tha
 writes a composite Image containing the build output into the Registry. At that point the other side of the coin takes over and OpenShift deploys the Application
 ====
 
-As you will see in this Module the S2I approach does everything for you, including the creation of the Application objects, such as the Service, Route, Pods and DeploymentConfig, as with the 
+As you will see in this Module the S2I approach does everything for you, including the creation of the Application objects, such as the Service, Route, Pods and Deployments, as with the 
 creation of an Application from an existing Image as shown in Module 002.
 
 [TIP]
 ====
-The example provided is a JAVA Quarkus application built for a student bootcamp. OpenShift provides a number of S2I Builder Images out-of-the-box; if you want to try another framework 
-select a different Builder Image when prompted to use the OpenJDK one and use the 'Try Sample' link shown beneath the Git Repo URL textbox rather than the one provided in the instructions.
+The example provided is a JAVA Quarkus application. OpenShift provides a number of S2I Builder Images out-of-the-box; if you want to try another framework select a different Builder Image when prompted to use the OpenJDK one and use the 'Try Sample' link shown beneath the Git Repo URL textbox rather than the one provided in the instructions.
 ====
 
 === *Creating the Application*

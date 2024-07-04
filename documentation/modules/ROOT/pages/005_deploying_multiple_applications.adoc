@@ -90,7 +90,7 @@ Leave all other options as they are and hit *Create*. When the topology page app
 [NOTE]
 ====
 Under the *Pods* part of the resources tab you will see a message saying *'Waiting for the build'*. OpenShift/Kubernetes works by reconciling the actual physical components created against the desired state and when OpenShift
-creates an application it creates *both* the BuildConfig, which builds the Application, and the Deployment/DeploymentConfig which deploys it. +
+creates an application it creates *both* the BuildConfig, which builds the Application, and the Deployment which deploys it. +
 
 The Deployment will instantly try to create the Application, because that is the desired state it wants, but at this point the Build hasn't completed so the composite Image, made
 up of the compiled source and the framework image, doesn't exist, so you can get warning messages.

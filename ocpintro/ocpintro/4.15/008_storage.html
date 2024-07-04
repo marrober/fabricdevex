@@ -305,11 +305,11 @@ you are creating</strong></p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/utherp0/envchecker</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/rh-uki-openshift-ssa/envchecker</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Set the <strong>Application</strong> (which is the Application Grouping) to <strong>storage-app</strong> by selecting <strong>Create Application</strong> from the pulldown and entering storage-app into the textbox. Change the name to <strong>storageexample</strong>. Set the <strong>Resource</strong> type to generate to <strong>DeploymentConfig</strong>. Hit <strong>Create</strong> to start the build.</p>
+<p>Set the <strong>Application</strong> (which is the Application Grouping) to <strong>storage-app</strong> by selecting <strong>Create Application</strong> from the pulldown and entering storage-app into the textbox. Change the name to <strong>storageexample</strong>. Set the <strong>Resource</strong> type to generate to <strong>Deployment</strong>. Hit <strong>Create</strong> to start the build.</p>
 </div>
 </div>
 <div class="sect2">
@@ -358,8 +358,7 @@ file system in the Containers readable/writeable storage space.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>We are also going to take advantage of a useful feature of the Developer interface; you can <strong>search</strong> for objects of a certain type and then add them to the lefthand havigation panel. For
-ease of use we are going to do this for the <strong>PVC</strong> <strong>Persistent Volume Claims</strong>.</p>
+<p>We are also going to take advantage of a useful feature of the Developer interface; you can <strong>search</strong> for objects of a certain type and then add them to the lefthand havigation panel. For ease of use we are going to do this for the <strong>PVC</strong> <strong>Persistent Volume Claims</strong>.</p>
 </div>
 </td>
 </tr>
@@ -456,11 +455,11 @@ will now do, will instantiate and bind the storage</p>
 </table>
 </div>
 <div class="paragraph">
-<p>This piece of storage is now bound to the <em>project</em> but not bound to the <em>application</em>. To do that we need to add the Storage to the <strong>DeploymentConfig</strong>, telling OpenShift how to
+<p>This piece of storage is now bound to the <em>project</em> but not bound to the <em>application</em>. To do that we need to add the Storage to the <strong>Deployment</strong>, telling OpenShift how to
 attach the file system into the Application itself.</p>
 </div>
 <div class="paragraph">
-<p>Click on <strong>Topology</strong>. Click on the Roundel for <strong>storageexample</strong>. Select the pulldown next to the <strong>DC</strong> storageexample and click <strong>Add storage</strong>.</p>
+<p>Click on <strong>Topology</strong>. Click on the Roundel for <strong>storageexample</strong>. Select the <strong>Actions</strong> pulldown next to the <strong>D</strong> storageexample and click <strong>Add storage</strong>.</p>
 </div>
 <div class="paragraph">
 <p>In the <strong>Add Storage</strong> dialog leave <strong>Use existing claim</strong> selected and click on <strong>Select claim</strong>. Choose <strong>examplestorage</strong>.</p>
@@ -473,7 +472,7 @@ attach the file system into the Application itself.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can shortcut the process by creating the PVC in this dialo; we pre-created it to show the separate PVC components.</p>
+<p>You can shortcut the process by creating the PVC in this dialog; we pre-created it to show the separate PVC components.</p>
 </div>
 </td>
 </tr>
@@ -488,7 +487,7 @@ attach the file system into the Application itself.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When you hit <strong>Save</strong> the <strong>DC</strong> will be displayed and the Application will be re-deployed. Watch the process, and then when the new version has completed click on the <strong>Pods</strong> tab on the <strong>DC</strong> panel.</p>
+<p>When you hit <strong>Save</strong> the deployment will be displayed and the Application will be re-deployed. Watch the process, and then when the new version has completed click on the <strong>Pods</strong> tab on the deployment panel.</p>
 </div>
 </div>
 <div class="sect2">
@@ -556,21 +555,20 @@ ls -al</code></pre>
 <div class="sect2">
 <h3><strong>Showing the ReadWriteOnce behaviour</strong></h3>
 <div class="paragraph">
-<p>Switch back to the <strong>Topology</strong> view. Click on the Roundel to display the <strong>DC</strong> storageexample. Click on the <strong>Details</strong> tab. Scale the Application up to two replicas by clicking on the up arrow next to the Roundel displayed
-in the <strong>DC</strong> panel.</p>
+<p>Switch back to the <strong>Topology</strong> view. Click on the Roundel to display the deployment storageexample. Click on the <strong>Details</strong> tab. Scale the Application up to two replicas by clicking on the up arrow next to the Roundel displayed
+in the deployment panel.</p>
 </div>
 <div class="paragraph">
-<p>If you wait a little while then click on <strong>Observe</strong> on the lefthand panel. Switch to the <strong>Events</strong> tab. You should see an event that indicates a 'Multi-Attach' error. <strong>This is as expected</strong>. We set the
-behaviour of the <strong>PV</strong> to ReadWriteOnce, it can only be mounted to one active Container.</p>
+<p>If you wait a little while then click on <strong>Observe</strong> on the lefthand panel  (not the observe section of the deployment details). Switch to the <strong>Events</strong> tab. You should see an event that indicates a 'Multi-Attach' error. <strong>This is as expected</strong>. We set the behaviour of the <strong>PV</strong> to ReadWriteOnce, it can only be mounted to one active Container.</p>
 </div>
 <div class="paragraph">
-<p>Switch back to the <strong>Topology</strong> panel and following the instructions above set the number of replicas for the <strong>DC</strong> to 1 rather than 2.</p>
+<p>Switch back to the <strong>Topology</strong> panel and following the instructions above set the number of replicas for the deployment to 1 rather than 2.</p>
 </div>
 </div>
 <div class="sect2">
 <h3><strong>Demonstrating Storage Persistence</strong></h3>
 <div class="paragraph">
-<p>Now we are going to completely remove the running instances. Using the down arrow next to the Roundel in the <strong>DC</strong> panel reduce the number of replicas of the Application to <strong>0</strong>.</p>
+<p>Now we are going to completely remove the running instances. Using the down arrow next to the Roundel in the deployment panel reduce the number of replicas of the Application to <strong>0</strong>.f</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -578,7 +576,7 @@ behaviour of the <strong>PV</strong> to ReadWriteOnce, it can only be mounted to
 </div>
 </div>
 <div class="paragraph">
-<p>At this point there are no Applications active. Using the up arrow next to the Roundel in the <strong>DC</strong> panel increase the replicas back to <strong>1</strong>.</p>
+<p>At this point there are no Applications active. Using the up arrow next to the Roundel in the deployment panel increase the replicas back to <strong>1</strong>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -588,14 +586,14 @@ behaviour of the <strong>PV</strong> to ReadWriteOnce, it can only be mounted to
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The Application is recreated from the original immutable Image. <strong>However</strong> the <strong>DC</strong> specifies a connection to the external storage via the PVC.</p>
+<p>The Application is recreated from the original immutable Image. <strong>However</strong> the deployment specifies a connection to the external storage via the PVC.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Click on the <strong>Resources</strong> tab in the <strong>DC</strong> panel and click on the single active <strong>Pod</strong> name. In the <strong>Pod details</strong> panel click on the <strong>Terminal</strong> tab. Execute the following commands:</p>
+<p>Click on the <strong>Resources</strong> tab in the deployment panel and click on the single active <strong>Pod</strong> name. In the <strong>Pod details</strong> panel click on the <strong>Terminal</strong> tab. Execute the following commands:</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
@@ -635,11 +633,11 @@ ls -al</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>To finish the Module head to the <strong>Topology page</strong>, click on each of the <strong>Application Groups</strong> (i.e. (A) config-app) and in the <strong>Actions</strong> menu on the righthand panel for the Application choose <strong>Delete Application</strong>.
+<p>To finish the Module head to the <strong>Topology page</strong>, click on each of the <strong>Application Groups</strong> (i.e. (A) storage-app) and in the <strong>Actions</strong> menu on the righthand panel for the Application choose <strong>Delete Application</strong>.
 The system will prompt you to enter the name of the Application Group; enter this name and press return/hit <strong>Delete</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Also go to the <strong>Storage</strong> panel (via your shortcut on the lefthand navigation panel). Remove the PVC if it remains (click on the three dot/kebab at the far right and choose <strong>Delete PersistentVolumeClaim</strong>).</p>
+<p>Also go to the <strong>PersistentVolumeClaims</strong> panel (via your shortcut on the lefthand navigation panel). Remove the PVC if it remains (click on the three dot/kebab at the far right and choose <strong>Delete PersistentVolumeClaim</strong>).</p>
 </div>
 <div class="admonitionblock tip">
 <table>

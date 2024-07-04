@@ -385,34 +385,34 @@ Now we have three new tasks we can create a Pipeline to use them. Click on *Pipe
 [.console-input]
 [source,bash]
 ----
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: ubifilepipeline
 spec:
   tasks:
-    - name: create
+    - name: ubifilecreate
       taskRef:
-        kind: task
+        kind: Task
         name: ubifilecreate
       workspaces:
         - name: working
           workspace: workingworkspace
-    - name: check
-      taskRef:
-        kind: task
-        name: ubifilecheck
+    - name: ubifilecheck
       runAfter:
-        - create
+        - ubifilecreate
+      taskRef:
+        kind: Task
+        name: ubifilecheck
       workspaces:
         - name: working
           workspace: workingworkspace
-    - name: remove 
-      taskRef:
-        kind: task
-        name: ubifileremove
+    - name: ubifileremove
       runAfter:
-        - check
+        - ubifilecheck
+      taskRef:
+        kind: Task
+        name: ubifileremove
       workspaces:
         - name: working
           workspace: workingworkspace

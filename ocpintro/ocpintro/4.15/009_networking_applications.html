@@ -302,7 +302,7 @@ you are creating</strong></p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ilawson/devex4</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/marrober/devex-terminal-4:full-terminal-1.5</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -313,14 +313,14 @@ you are creating</strong></p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/utherp0/bootcampapp</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/rh-uki-openshift-ssa/workshop-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Choose <strong>networking-app</strong> from the <strong>Application</strong> pulldown. Set the <strong>Name</strong> to <strong>application2</strong>. Click <strong>Create</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Click <strong>+Add</strong> again. Click on <strong>All services</strong>. Click on the <strong>.NET</strong> Builder Image. Click <strong>Create Application</strong>. Under the <strong>Git Repo URL</strong> pulldown click on <strong>Try sample</strong>. In <strong>Application</strong>
+<p>Click <strong>+Add</strong> again. Click on <strong>All services</strong>. Click on the <strong>.NET</strong> Builder Image. Click <strong>Create</strong>. Under the <strong>Git Repo URL</strong> pulldown click on <strong>Try sample</strong>. In <strong>Application</strong>
 select the <strong>networking-app</strong> option. Give it the <strong>Name</strong> <strong>application3</strong>. Hit <strong>Create</strong>.</p>
 </div>
 <div class="imageblock">
@@ -412,7 +412,7 @@ to <strong>Route</strong> and then click on <strong>Add to navigation</strong>.<
 <td class="content">
 <div class="paragraph">
 <p>Here&#8217;s where it gets interesting. Each of the Services is named after the application it is linked to; when we created the applications giving them a name assigned
-that name to all objects tied to that Application, for instance <strong>DeploymentConfig</strong>, <strong>Services</strong>, etc.<br></p>
+that name to all objects tied to that Application, for instance <strong>Deployment</strong>, <strong>Services</strong>, etc.<br></p>
 </div>
 <div class="paragraph">
 <p>The OpenShift SDN provides <em>resolvable</em> DNS entries for all the Services within the Project <em>by name</em>. In English it means that, local to the Project, all Applications
@@ -452,6 +452,9 @@ from where you are in the instructions.</p>
 <p>What you will see is a set of HTML; this is the output of the Application <strong>application2</strong>. Using the 'curl' command we have done a URI pull directly.</p>
 </div>
 <div class="paragraph">
+<p>Switch back to the Topology view and select the deployment roundel for Application3. Select the pod for this application and enter a terminal.</p>
+</div>
+<div class="paragraph">
 <p>Now type:</p>
 </div>
 <div class="listingblock console-input">
@@ -461,6 +464,14 @@ from where you are in the instructions.</p>
 </div>
 <div class="paragraph">
 <p>OpenShift also injects a lot of connectivity information directly into the other Applications for the Service endpoints; note the definitions of protocols, ports and IP addresses.</p>
+</div>
+<div class="paragraph">
+<p>Filter the output a little with the command:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">env | grep APPLICATION2 | grep TCP=tcp://</code></pre>
+</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -509,7 +520,7 @@ from where you are in the instructions.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://application3.redhat-training.svc.cluster.local:8080</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://application1.%PROJECT%.svc.cluster.local:8080</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -527,7 +538,7 @@ from where you are in the instructions.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>You should see the HTML output of the <strong>application3</strong> application via the <strong>application3</strong> service.</p>
+<p>You should see the HTML output of the <strong>application1</strong> application via the <strong>application1</strong> service.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
