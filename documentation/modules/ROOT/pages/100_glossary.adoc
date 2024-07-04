@@ -2,8 +2,6 @@
 
 :!sectids:
 
-image::001-image001.png[OpenShift]
-
 == *A Glossary of Technical Terms used in the Modules*
 
 ====
