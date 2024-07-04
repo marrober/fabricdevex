@@ -1,0 +1,19 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ws
+  labels:
+    app: workshop
+    app.kubernetes.io/component: workshop
+    app.kubernetes.io/instance: workshop
+spec:
+  to:
+    kind: Service
+    name: workshop
+    weight: 100
+  port:
+    targetPort: 8443-tcp
+  tls:
+    termination: passthrough
+  wildcardPolicy: None
+  
