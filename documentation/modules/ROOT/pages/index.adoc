@@ -46,11 +46,11 @@ image::index-01-workshop-introduction-cluster-and-userid.png[Setting cluster and
 
 Enter the information into the two textboxes at the top of page. Remember to press *RETURN* after entering text into each field.
 
-=== Introducing the OpenShift Environment
+== Introducing the OpenShift Environment
 
 In this workshop you will use the OpenShift graphical user interface via a browser, and you will also use a command line interface.
 
-==== Web user interface
+=== Web user interface
 
 The OpenShift web user interface is accessible at this URL :
 
@@ -71,7 +71,7 @@ Your username has already been selected and is in the format 'userxxx' for examp
 
 Once you are logged in you should see your default project that matches your username. Select this project so that you can begin to create deployments etc.
 
-==== Command line interface
+=== Command line interface
 
 The OpenShift command line utilities that you need for the workshop can be downloaded from the the web user interface of the cluster. However, many users are unable or hesitant to download and install additional software so a command line interface is made available within the web user interface of the cluster. Additionally, there are more command line tools used for the workshop than simply the OpenShift command line. For example, we use curl to interact with applications, and it is easier if these command line utilities are made available quickly and easily.
 
