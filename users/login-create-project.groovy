@@ -1,6 +1,6 @@
 clusterAddress = args[0];
 
-for (i in 27..200) {
+for (i in 1..200) {
 
     loginCmd = sprintf("oc login %s --username user%03d --password openshift", clusterAddress, i);
 
