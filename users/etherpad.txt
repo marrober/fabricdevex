@@ -1,0 +1,125 @@
+Red Hat OpenShift Workshop
+
+Important URL's 
+
+Workshop instructions : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/
+
+Cluster subdomain : apps.cluster-r624h.r624h.sandbox470.opentlc.com
+
+
+<name> - user1 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user1
+<name> - user2 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user2
+<name> - user3 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user3
+<name> - user4 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user4
+<name> - user5 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user5
+<name> - user6 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user6
+<name> - user7 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user7
+<name> - user8 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user8
+<name> - user9 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user9
+
+<name> - user10 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user10
+<name> - user11 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user11
+<name> - user12 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user12
+<name> - user13 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user13
+<name> - user14 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user14
+<name> - user15 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user15
+<name> - user16 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user16
+<name> - user17 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user17
+<name> - user18 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user18
+<name> - user19 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user19
+
+<name> - user20 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user20
+<name> - user21 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user21
+<name> - user22 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user22
+<name> - user23 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user23
+<name> - user24 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user24
+<name> - user25 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user25
+<name> - user26 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user26
+<name> - user27 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user27
+<name> - user28 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user28
+<name> - user29 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user29
+
+<name> - user30 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user30
+<name> - user31 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user31
+<name> - user32 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user32
+<name> - user33 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user33
+<name> - user34 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user34
+<name> - user35 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user35
+<name> - user36 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user36
+<name> - user37 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user37
+<name> - user38 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user38
+<name> - user39 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user39
+
+<name> - user40 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user40
+<name> - user41 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user41
+<name> - user42 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user42
+<name> - user43 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user43
+<name> - user44 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user44
+<name> - user45 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user45
+<name> - user46 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user46
+<name> - user47 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user47
+<name> - user48 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user48
+<name> - user49 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user49
+
+<name> - user50 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user50
+<name> - user51 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user51
+<name> - user52 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user52
+<name> - user53 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user53
+<name> - user54 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user54
+<name> - user55 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user55
+<name> - user56 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user56
+<name> - user57 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user57
+<name> - user58 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user58
+<name> - user59 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user59
+
+<name> - user60 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user60
+<name> - user61 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user61
+<name> - user62 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user62
+<name> - user63 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user63
+<name> - user64 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user64
+<name> - user65 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user65
+<name> - user66 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user66
+<name> - user67 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user67
+<name> - user68 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user68
+<name> - user69 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user69
+
+<name> - user70 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user70
+<name> - user71 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user71
+<name> - user72 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user72
+<name> - user73 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user73
+<name> - user74 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user74
+<name> - user75 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user75
+<name> - user76 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user76
+<name> - user77 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user77
+<name> - user78 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user78
+<name> - user79 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user79
+
+<name> - user80 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user80
+<name> - user81 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user81
+<name> - user82 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user82
+<name> - user83 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user83
+<name> - user84 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user84
+<name> - user85 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user85
+<name> - user86 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user86
+<name> - user87 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user87
+<name> - user88 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user88
+<name> - user89 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user89
+
+<name> - user90 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user90
+<name> - user91 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user91
+<name> - user92 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user92
+<name> - user93 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user93
+<name> - user94 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user94
+<name> - user95 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user95
+<name> - user96 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user96
+<name> - user97 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user97
+<name> - user98 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user98
+<name> - user99 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user99
+
+<name> - user100 - Workshop link  : https://workshop-workshop.apps.cluster-r624h.r624h.sandbox470.opentlc.com/ocpintro/4.15/index.html?&CLUSTER_SUBDOMAIN=apps.cluster-r624h.r624h.sandbox470.opentlc.com&PROJECT=user100
+
+
+
+
+
+
